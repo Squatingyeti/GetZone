@@ -1,0 +1,10 @@
+name: GetZone
+main: net.yeticraft.squatingyeti.GetZone.GetZone
+version: 0.1
+description: >
+             GetZone
+commands:
+  getzone:
+    aliases: [gz]
+    description: Gets the current zone of a player
+    usage: /getzone
