@@ -39,38 +39,38 @@ public class GetZone extends JavaPlugin {
 			if (label.equalsIgnoreCase("getZone") || label.equalsIgnoreCase("gz")) {
 			int x = loc.getBlockX(); 
 			int z = loc.getBlockZ();
-				if (x > -4000 && x < 4000 && z < -500 && z > -2250) {
+				if (x >= -4000 && x <= 4000 && z < -658 && z >= -2250) {
 				player.sendMessage(ChatColor.GRAY + "You are in " + ChatColor.GREEN + "Sasqaui Front - "
 						+ ChatColor.GRAY + "Build: " + ChatColor.GREEN + "ON" + ChatColor.GRAY + " PVP: "
 						+ ChatColor.GREEN + "ON");
 				return true;
 			}
-					else if (x > -4000 && x < 4000 && z < -2250 && z > -4000) {
+					else if (x >= -4000 && x <= 4000 && z < -2250 && z >= -4000) {
 						player.sendMessage(ChatColor.GRAY + "You are in " + ChatColor.GREEN + "Sasqaui - "
 								+ ChatColor.GRAY + "Build: " + ChatColor.GREEN + "ON" + ChatColor.GRAY + " PVP: "
 								+ ChatColor.GREEN + "ON");
 				return true;
 			}
-					else if (x > -4000 && x < 4000 && z > 500 && z < 2250) {
+					else if (x >= -4000 && x <= 4000 && z > 662 && z <= 2250) {
 						player.sendMessage(ChatColor.GRAY + "You are in " + ChatColor.GREEN + "Yowie Front - "
 								+ ChatColor.GRAY + "Build: " + ChatColor.GREEN + "ON" + ChatColor.GRAY + " PVP: "
 								+ ChatColor.GREEN + "ON");
 				return true;
 			}
-					else if (x > -4000 && x < 4000 && z > 2250 && z < 4000) {
+					else if (x >= -4000 && x <= 4000 && z > 2250 && z <= 4000) {
 						player.sendMessage(ChatColor.GRAY + "You are in " + ChatColor.GREEN + "Yowie - "
 								+ ChatColor.GRAY + "Build: " + ChatColor.GREEN + "ON" + ChatColor.GRAY + " PVP: "
 								+ ChatColor.GREEN + "ON");
 				return true;
 			}
-					else if (x > -4000 && x < -750 && z > -500 && z < 500 || x > 750 && x < 4000 && z > -500 && z < 500) {
+					else if (x >= -4000 && x <= -465  && z >= -658 && z <= 662 ||  x >= 462 && x <= 4000 && z >= -658 && z <= 662) { 
 						player.sendMessage(ChatColor.GRAY + "You are in " + ChatColor.GREEN + "Almas - "
 								+ ChatColor.GRAY + "Build: " + ChatColor.GREEN + "ON" + ChatColor.GRAY + " PVP: "
 								+ ChatColor.GREEN + "ON");
 				return true;
 			}
 			else {
-				player.sendMessage(ChatColor.GRAY + "You are in " + ChatColor.GREEN + "Spawn - "
+				player.sendMessage(ChatColor.GRAY + "You are in " + ChatColor.GREEN + "Starting Area - "
 						+ ChatColor.GRAY + "Build: " + ChatColor.GREEN + "ON" + ChatColor.GRAY + " PVP: "
 						+ ChatColor.RED + "OFF");
 				return true;

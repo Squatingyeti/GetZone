@@ -1,6 +1,6 @@
 name: GetZone
 main: net.yeticraft.squatingyeti.GetZone.GetZone
-version: 0.1
+version: 1.0
 description: >
              GetZone
 commands:
