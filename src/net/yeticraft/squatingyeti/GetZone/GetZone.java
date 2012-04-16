@@ -81,12 +81,13 @@ public class GetZone extends JavaPlugin {
 							return true;
 				}
 				
-				if (currentZone(player.getLocation(), player.getName()).equalsIgnoreCase("Yowie_Front"))
+				if (currentZone(player.getLocation(), player.getName()).equalsIgnoreCase("Yowie_Front")) {
 					player.sendMessage(ChatColor.GRAY + "You are in " + ChatColor.GREEN + "Yowie Front - "
 							+ ChatColor.GRAY + "Build: " + ChatColor.GREEN + "ON" + ChatColor.GRAY + " PVP: "
 							+ ChatColor.GREEN + "ON");
 							return true;
-				}		
+				}	
+			
 				if (currentZone(player.getLocation(), player.getName()).equalsIgnoreCase("Yowie")) {
 					player.sendMessage(ChatColor.GRAY + "You are in " + ChatColor.GREEN + "Yowie - "
 							+ ChatColor.GRAY + "Build: " + ChatColor.GREEN + "ON" + ChatColor.GRAY + " PVP: "
@@ -94,11 +95,10 @@ public class GetZone extends JavaPlugin {
 							return true;
 				}
 				else {
-					player.sendMessage(ChatColor.YELLOW + "You must be in a special zone. Move a bit and try again");
-					return true;
+				player.sendMessage(ChatColor.YELLOW + "You must be in a special zone. Move a bit and try again");
 				}
-				
-			}
+			} return true;
+	}
 			
 	public WorldGuardPlugin getWorldGuard() {
 		Plugin plugin = getServer().getPluginManager().getPlugin("WorldGuard");
@@ -133,4 +133,4 @@ public class GetZone extends JavaPlugin {
 		}
 	 return ("Unknown");
 	} 
-}
+}		
