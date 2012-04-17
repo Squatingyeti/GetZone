@@ -51,14 +51,15 @@ public class GetZone extends JavaPlugin {
 				if (currentZone(player.getLocation(), player.getName()).equalsIgnoreCase("Almas")) {
 					if ((x > -106 && x < 115) && (z > -137 && z < 139)) {
 						player.sendMessage(ChatColor.GRAY + "You are in " + ChatColor.GREEN + "Spawn - "
-								+ ChatColor.GRAY + "Build: " + ChatColor.GREEN + "ON" + ChatColor.GRAY + " PVP: "
-								+ ChatColor.GREEN + "ON");
+								+ ChatColor.GRAY + "Build: " + ChatColor.RED + "OFF" + ChatColor.GRAY + " PVP: "
+								+ ChatColor.RED + "OFF");
 								return true;
 					}
 					if ((x > -461 && x < 460) && (z > -461 && z < 460)) {
 						player.sendMessage(ChatColor.GRAY + "You are in " + ChatColor.GREEN + "Starting Area - "
 								+ ChatColor.GRAY + "Build: " + ChatColor.GREEN + "ON" + ChatColor.GRAY + " PVP: "
 								+ ChatColor.GREEN + "ON");
+								return true;
 					} else{
 					player.sendMessage(ChatColor.GRAY + "You are in " + ChatColor.GREEN + "Almas - "
 							+ ChatColor.GRAY + "Build: " + ChatColor.GREEN + "ON" + ChatColor.GRAY + " PVP: "
