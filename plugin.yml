@@ -8,3 +8,7 @@ commands:
     aliases: [gz]
     description: Gets the current zone of a player
     usage: /getzone
+permissions:
+  getzone.other:
+    description: Gets the current zone of another player
+    default: op

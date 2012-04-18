@@ -35,8 +35,19 @@ public class GetZone extends JavaPlugin {
             sender.sendMessage("This Command only works for players");
             return true;
         }
-
 		Player player =(Player) sender;
+		Player target;
+		if (args.length == 1 && sender.hasPermission("getzone.other")) {
+			target = findOnlinePlayer(args[0]);
+			getZoneOther(sender, target);
+			return true;
+		}
+		if (args.length >= 2) {
+			player.sendMessage("Too many parameters. Try /getzone.");
+			return true;
+		}
+
+		
 		//Location loc = player.getLocation();
 		World world = player.getWorld();
 		if(!(world.getName().equalsIgnoreCase("yeticraft"))){
@@ -134,4 +145,96 @@ public class GetZone extends JavaPlugin {
 		}
 	 return ("Unknown");
 	} 
+	
+	public void getZoneOther(CommandSender sender, Player target) {
+		if (target != null) {
+			World world = target.getWorld();
+			if(!(world.getName().equalsIgnoreCase("yeticraft"))){
+				sender.sendMessage(ChatColor.RED + target.getName() + " is not currently in the main world.");
+				return;
+			}
+			
+			Location loc = target.getLocation();
+			int x = loc.getBlockX();
+			int z = loc.getBlockZ();
+			String targName = target.getName();
+			if (currentZone(target.getLocation(), target.getName()).equalsIgnoreCase("Almas")) {
+				if ((x > -106 && x < 115) && (z > -137 && z < 139)) {
+					sender.sendMessage(ChatColor.GREEN + targName + ChatColor.GRAY + " is in " + ChatColor.GREEN + "Spawn - "
+							+ ChatColor.GRAY + "Build: " + ChatColor.RED + "OFF" + ChatColor.GRAY + " PVP: "
+							+ ChatColor.RED + "OFF");
+							return; 
+				}
+				if ((x > -461 && x < 460) && (z > -461 && z < 460)) {
+					sender.sendMessage(ChatColor.GREEN + targName + ChatColor.GRAY + " is in " + ChatColor.GREEN + "Starting Area - "
+							+ ChatColor.GRAY + "Build: " + ChatColor.GREEN + "ON" + ChatColor.GRAY + " PVP: "
+							+ ChatColor.GREEN + "ON");
+							return;
+				} else{
+					sender.sendMessage(ChatColor.GREEN + targName + ChatColor.GRAY + " is in " + ChatColor.GREEN + "Almas - "
+						+ ChatColor.GRAY + "Build: " + ChatColor.GREEN + "ON" + ChatColor.GRAY + " PVP: "
+						+ ChatColor.GREEN + "ON");
+						return;
+				}
+			}
+
+			if (currentZone(target.getLocation(), target.getName()).equalsIgnoreCase("Sasquai")) {
+				sender.sendMessage(ChatColor.GREEN + targName + ChatColor.GRAY + " is in " + ChatColor.GREEN + "Sasquai - "
+						+ ChatColor.GRAY + "Build: " + ChatColor.GREEN + "ON" + ChatColor.GRAY + " PVP: "
+						+ ChatColor.GREEN + "ON");
+						return;
+			}
+			
+			if (currentZone(target.getLocation(), target.getName()).equalsIgnoreCase("Sasquai_Front")) {
+				sender.sendMessage(ChatColor.GREEN + targName + ChatColor.GRAY + " is in " + ChatColor.GREEN + "Sasquai Front - "
+						+ ChatColor.GRAY + "Build: " + ChatColor.GREEN + "ON" + ChatColor.GRAY + " PVP: "
+						+ ChatColor.GREEN + "ON");
+						return;
+			}
+			
+			if (currentZone(target.getLocation(), target.getName()).equalsIgnoreCase("Yowie_Front")) {
+				sender.sendMessage(ChatColor.GREEN + targName + ChatColor.GRAY + " is in " + ChatColor.GREEN + "Yowie Front - "
+						+ ChatColor.GRAY + "Build: " + ChatColor.GREEN + "ON" + ChatColor.GRAY + " PVP: "
+						+ ChatColor.GREEN + "ON");
+						return;
+			}	
+		
+			if (currentZone(target.getLocation(), target.getName()).equalsIgnoreCase("Yowie")) {
+				sender.sendMessage(ChatColor.GREEN + targName + ChatColor.GRAY + " is in " + ChatColor.GREEN + "Yowie - "
+						+ ChatColor.GRAY + "Build: " + ChatColor.GREEN + "ON" + ChatColor.GRAY + " PVP: "
+						+ ChatColor.GREEN + "ON");
+						return;
+			}
+			else {
+			sender.sendMessage(ChatColor.YELLOW + targName + " must be in a special zone. Try again in a minute.");
+			}
+		}
+		else {
+			sender.sendMessage(ChatColor.RED + "That player is either not online or not a player on Yeticraft");
+		}return;
+	}
+		
+
+
+	
+	
+	public Player findOnlinePlayer(String name) {
+		if (name != null) {
+			Player p = getServer().getPlayer(name);
+			if (p != null) return p;
+			//try to find by partial name
+			Boolean found = false;
+			int nameLength = name.length();
+			for (Player p1: getServer().getOnlinePlayers()) {
+				if (p1.getName().length() > nameLength) {
+					if (p1.getName().substring(0, (nameLength - 1)).equalsIgnoreCase(name)) {
+						//return null if more than 1 player matches
+						if (found) return null;
+						found = true;
+						p = p1;
+					}
+				}	
+			} return p;
+		} return null;
+	}
 }		
