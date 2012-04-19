@@ -130,39 +130,28 @@ public class GetZone extends JavaPlugin {
 		List<String> regionSet = regionManager.getApplicableRegionsIDs(pt);
 	
 		for(String currentRegion : regionSet) {
-			if (currentRegion.toLowerCase().equalsIgnoreCase("Sasquai")){
-				currentRegion = "Sasquai";
-				return (currentRegion);
-			}
-			if (currentRegion.toLowerCase().equalsIgnoreCase("Sasquai_Front")){
-				currentRegion = "Sasquai_Front";
-				return (currentRegion);
-			}
-			if (currentRegion.toLowerCase().equalsIgnoreCase("Almas")){
-				currentRegion = "Almas";
-				return (currentRegion);
-			} 
-			if (currentRegion.toLowerCase().equalsIgnoreCase("Yowie_Front")){
-				currentRegion = "Yowie_Front";
-				return (currentRegion);
-			}
-			if (currentRegion.toLowerCase().equalsIgnoreCase("Yowie")){
-				currentRegion = "Yowie";
-				return (currentRegion);
-			}
-			else{
-				currentRegion = "Unknown";
-				return (currentRegion);
-				}
-			} return ("Unknown");
-		} 
+			if (currentRegion.toLowerCase().equalsIgnoreCase("Sasquai"))
+				return ("Sasquai");
+			if (currentRegion.toLowerCase().equalsIgnoreCase("Sasquai_Front"))
+				return ("Sasquai_Front");
+			if (currentRegion.toLowerCase().equalsIgnoreCase("Almas"))
+				return ("Almas");
+
+			if (currentRegion.toLowerCase().equalsIgnoreCase("Yowie_Front"))
+				return ("Yowie_Front");
+
+			if (currentRegion.toLowerCase().equalsIgnoreCase("Yowie"))
+				return ("Yowie");	
+			
+		} return ("Unknown"); 
+	}
 	
-	public String getZoneOther(CommandSender sender, Player target) {
+	public void getZoneOther(CommandSender sender, Player target) {
 		if (target != null) {
 			World world = target.getWorld();
 			if(!(world.getName().equalsIgnoreCase("yeticraft"))){
 				sender.sendMessage(ChatColor.RED + target.getName() + " is not currently in the main world.");
-				return ("Not currently in main world");
+				return;
 			}
 			
 			Location loc = target.getLocation();
@@ -174,18 +163,18 @@ public class GetZone extends JavaPlugin {
 					sender.sendMessage(ChatColor.GREEN + targName + ChatColor.GRAY + " is in " + ChatColor.GREEN + "Spawn - "
 							+ ChatColor.GRAY + "Build: " + ChatColor.RED + "OFF" + ChatColor.GRAY + " PVP: "
 							+ ChatColor.RED + "OFF");
-							return ("Spawn"); 
+							return;
 				}
 				if ((x > -461 && x < 460) && (z > -461 && z < 460)) {
 					sender.sendMessage(ChatColor.GREEN + targName + ChatColor.GRAY + " is in " + ChatColor.GREEN + "Starting Area - "
 							+ ChatColor.GRAY + "Build: " + ChatColor.GREEN + "ON" + ChatColor.GRAY + " PVP: "
 							+ ChatColor.GREEN + "ON");
-							return ("Start Area");
+							return;
 				} else{
 					sender.sendMessage(ChatColor.GREEN + targName + ChatColor.GRAY + " is in " + ChatColor.GREEN + "Almas - "
 						+ ChatColor.GRAY + "Build: " + ChatColor.GREEN + "ON" + ChatColor.GRAY + " PVP: "
 						+ ChatColor.GREEN + "ON");
-						return ("Almas");
+						return;
 				}
 			}
 
@@ -193,37 +182,37 @@ public class GetZone extends JavaPlugin {
 				sender.sendMessage(ChatColor.GREEN + targName + ChatColor.GRAY + " is in " + ChatColor.GREEN + "Sasquai - "
 						+ ChatColor.GRAY + "Build: " + ChatColor.GREEN + "ON" + ChatColor.GRAY + " PVP: "
 						+ ChatColor.GREEN + "ON");
-						return ("Sasquai");
+						return;
 			}
 			
 			if (currentZone(target.getLocation(), target.getName()).equalsIgnoreCase("Sasquai_Front")) {
 				sender.sendMessage(ChatColor.GREEN + targName + ChatColor.GRAY + " is in " + ChatColor.GREEN + "Sasquai Front - "
 						+ ChatColor.GRAY + "Build: " + ChatColor.GREEN + "ON" + ChatColor.GRAY + " PVP: "
 						+ ChatColor.GREEN + "ON");
-						return ("Sasquai Front");
+						return;
 			}
 			
 			if (currentZone(target.getLocation(), target.getName()).equalsIgnoreCase("Yowie_Front")) {
 				sender.sendMessage(ChatColor.GREEN + targName + ChatColor.GRAY + " is in " + ChatColor.GREEN + "Yowie Front - "
 						+ ChatColor.GRAY + "Build: " + ChatColor.GREEN + "ON" + ChatColor.GRAY + " PVP: "
 						+ ChatColor.GREEN + "ON");
-						return ("Yowie Front");
+						return;
 			}	
 		
 			if (currentZone(target.getLocation(), target.getName()).equalsIgnoreCase("Yowie")) {
 				sender.sendMessage(ChatColor.GREEN + targName + ChatColor.GRAY + " is in " + ChatColor.GREEN + "Yowie - "
 						+ ChatColor.GRAY + "Build: " + ChatColor.GREEN + "ON" + ChatColor.GRAY + " PVP: "
 						+ ChatColor.GREEN + "ON");
-						return ("Yowie");
-			}
-			else {
-			sender.sendMessage(ChatColor.YELLOW + targName + " must be in a special zone. Try again in a minute.");
-			}
+						return;
+				}
+				else {
+						sender.sendMessage(ChatColor.YELLOW + targName + " must be in a special zone. Try again in a minute.");
+				}
+			}else {
+					sender.sendMessage(ChatColor.RED + "That player is either not online or not a player on Yeticraft");
+			}	
+		 	return;
 		}
-		else {
-			sender.sendMessage(ChatColor.RED + "That player is either not online or not a player on Yeticraft");
-		}return ("Player Not Online");
-	}
 		
 
 
